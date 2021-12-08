@@ -1,4 +1,5 @@
 const canvas = document.querySelector("#canvas");
+const banner = document.querySelector("#banner");
 const base = document.querySelector("#base");
 const reset = document.querySelector("#reset");
 const slider = document.querySelector("#input-slider");
@@ -17,10 +18,12 @@ function checkRotation() {
 	if (window.innerHeight < window.innerWidth) {
 		canvas.style.width = "65vh";
 		canvas.style.height = "65vh";
+		banner.style.width = "65vh";
 		base.style.width = "65vh";
 	} else {
 		canvas.style.width = "65vw";
 		canvas.style.height = "65vw";
+		banner.style.width = "65vw";
 		base.style.width = "65vw";
 	}
 }
