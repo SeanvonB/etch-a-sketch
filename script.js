@@ -1,5 +1,12 @@
 const canvas = document.querySelector("#canvas");
 const base = document.querySelector("#base");
+const reset = document.querySelector("#reset");
+const slider = document.querySelector("#input-slider");
+const label = document.querySelector("#slider-label");
+
+// Create global variables
+let currentSize = 16;
+let currentStyle = drawBasic;
 
 function drawBasic() {
 	this.style.background = "#555";
@@ -23,6 +30,9 @@ function createCanvas(size = 16, style = drawBasic) {
 	// Confirm screen orientation
 	checkRotation();
 
+	// Clear prexisting canvas
+	canvas.textContent = "";
+
 	for (let i = 0; i < size * size; i++) {
 		let div = document.createElement("div");
 		div.classList.add("cell");
@@ -37,6 +47,22 @@ function createCanvas(size = 16, style = drawBasic) {
 		canvas.appendChild(div);
 	}
 }
+
+// Reset slider on refresh
+slider.value = "16";
+
+// Connect label, size slider, and canvas
+label.textContent = `${slider.value} x ${slider.value}`;
+slider.oninput = function () {
+	label.textContent = `${this.value} x ${this.value}`;
+	currentSize = this.value;
+	createCanvas(currentSize, currentStyle);
+};
+
+// Connect reset button and canvas
+reset.onclick = function () {
+	createCanvas(currentSize, currentStyle);
+};
 
 // Listen for orientation changes and update vh/wh
 window.addEventListener("resize", checkRotation);

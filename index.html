@@ -9,6 +9,21 @@
 		<script src="script.js" defer></script>
 	</head>
 	<body>
+		<div id="options">
+			<button id="reset" class="option">Reset</button>
+			<div class="slidercontainer">
+				<label for="slider" id="slider-label">16 x 16</label>
+				<input
+					type="range"
+					min="16"
+					max="64"
+					step="8"
+					value="16"
+					id="input-slider"
+					class="option"
+				/>
+			</div>
+		</div>
 		<div id="canvas"></div>
 		<div id="base">
 			<div class="knob"></div>

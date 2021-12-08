@@ -8,10 +8,61 @@ body {
 	background: wheat;
 	display: flex;
 	flex-direction: column;
+	font-family: Arial, Helvetica, sans-serif;
 	height: 100vh;
 	justify-content: center;
 	overflow: hidden;
 	width: 100vw;
+}
+
+button {
+	background: firebrick;
+	border: 5px outset seashell;
+	border-radius: 10px;
+	box-sizing: border-box;
+	color: seashell;
+	font-size: 18px;
+	font-weight: 700;
+	height: 50px;
+	margin: 15px;
+	transition-duration: 0.15s;
+	width: 100px;
+}
+
+button:active {
+	font-size: 12px;
+	font-weight: 900;
+}
+
+button:hover {
+	background: seashell;
+	border: 5px outset firebrick;
+	color: firebrick;
+	cursor: pointer;
+}
+
+label {
+	color: firebrick;
+	font-size: 18px;
+	font-weight: 900;
+}
+
+.knob {
+	background: seashell;
+	border: 2px dashed silver;
+	border-radius: 100px;
+	box-shadow: inset 0 0 0 2px silver;
+	height: 50px;
+	margin: 20px 10px 0;
+	width: 50px;
+}
+
+.slidercontainer {
+	display: flex;
+	flex-direction: column;
+	margin: 15px;
+	text-align: center;
+	width: 150px;
 }
 
 #base {
@@ -43,12 +94,16 @@ body {
 	width: 65vw;
 }
 
-.knob {
-	background: seashell;
-	border: 2px dashed silver;
-	border-radius: 100px;
-	box-shadow: inset 0 0 0 2px silver;
-	height: 50px;
-	margin: 20px 10px 0;
-	width: 50px;
+#input-slider {
+	cursor: pointer;
+}
+
+#options {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	max-height: 750px;
+	max-width: 750px;
+	width: 65vw;
 }
