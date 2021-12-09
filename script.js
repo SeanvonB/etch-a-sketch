@@ -1,19 +1,29 @@
+// Global variables
 const canvas = document.querySelector("#canvas");
 const banner = document.querySelector("#banner");
 const base = document.querySelector("#base");
 const reset = document.querySelector("#reset");
 const slider = document.querySelector("#input-slider");
 const label = document.querySelector("#slider-label");
-
-// Create global variables
 let currentSize = 16;
-let currentStyle = drawBasic;
 
-function drawBasic() {
+// Function for listeners to update cell color
+function draw() {
+	// Update color of THIS
 	this.style.background = "#555";
+
+	// Create array that contains all canvas cells
+	let siblings = Array.from(this.parentNode.children);
+
+	// Find index of THIS within array of its siblings
+	// Then update color of cell one row above
+	let index = siblings.indexOf(this);
+	if (siblings[index - currentSize]) {
+		siblings[index - currentSize].style.background = "#999";
+	}
 }
 
-// Change vw to vh for landscape devices
+// Function to switch vw and vh according to orientation
 function checkRotation() {
 	if (window.innerHeight < window.innerWidth) {
 		canvas.style.width = "65vh";
@@ -28,8 +38,8 @@ function checkRotation() {
 	}
 }
 
-// Populate canvas with tiles
-function createCanvas(size = 16, style = drawBasic) {
+// Function to populate canvas with cells
+function createCanvas(size = currentSize) {
 	// Confirm screen orientation
 	checkRotation();
 
@@ -45,7 +55,7 @@ function createCanvas(size = 16, style = drawBasic) {
 		div.style.height = `${100 / size}%`;
 
 		// Add listener
-		div.addEventListener("mouseover", style);
+		div.addEventListener("mouseover", draw);
 
 		canvas.appendChild(div);
 	}
@@ -59,12 +69,12 @@ label.textContent = `${slider.value} x ${slider.value}`;
 slider.oninput = function () {
 	label.textContent = `${this.value} x ${this.value}`;
 	currentSize = this.value;
-	createCanvas(currentSize, currentStyle);
+	createCanvas(currentSize);
 };
 
 // Connect reset button and canvas
 reset.onclick = function () {
-	createCanvas(currentSize, currentStyle);
+	createCanvas(currentSize);
 };
 
 // Listen for orientation changes and update vh/wh
