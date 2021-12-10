@@ -9,9 +9,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	font-family: Arial, Helvetica, sans-serif;
-	height: 100vh;
 	justify-content: center;
-	overflow: hidden;
+	max-width: 100%;
 	touch-action: manipulation;
 	width: 100vw;
 }
@@ -25,10 +24,10 @@ button {
 	color: seashell;
 	font-size: 16px;
 	font-weight: 700;
-	height: 40px;
-	margin: 10px;
+	height: min(10vw, 50px);
+	margin: 15px;
 	transition-duration: 0.15s;
-	width: 100px;
+	width: min(20vw, 100px);
 }
 
 button:active {
@@ -60,58 +59,59 @@ label {
 	border: 2px dashed silver;
 	border-radius: 100px;
 	box-shadow: inset 0 0 0 2px silver, 3px 3px 5px #555;
-	height: 50px;
-	margin: 20px 10px 0;
-	width: 50px;
+	height: min(10vw, 50px);
+	margin-top: min(5vw, 25px);
+	width: min(10vw, 50px);
 }
 
 .slider-container {
 	display: flex;
 	flex-direction: column;
-	margin: 10px;
+	margin: 15px;
 	text-align: center;
-	width: 150px;
+	width: min(25vw, 150px);
 }
 
 #banner {
+	box-sizing: border-box;
 	margin: 25px 0;
-	max-width: 750px;
+	max-width: 650px;
 	text-align: center;
-	width: 65vw;
+	width: 90vw;
 }
 
 #base {
+	align-items: flex-start;
 	background: firebrick;
-	border: solid firebrick;
-	border-radius: 0 0 25px 25px;
-	border-width: 0 50px 50px;
-	box-shadow: 3px 7px 5px #555;
 	display: flex;
-	height: 50px;
+	height: min(10vw, 50px);
 	justify-content: space-between;
-	margin: 0 10px 10px;
-	max-width: 750px;
-	min-width: 250px;
-	width: 65vw;
+	width: 100%;
 }
 
 #canvas {
 	align-items: center;
 	background: silver;
-	border: solid firebrick;
-	border-radius: 25px 25px 0 0;
-	border-width: 50px 50px 0;
-	box-shadow: 3px 9px 5px #555;
 	display: flex;
 	flex-wrap: wrap;
-	height: 65vw;
 	justify-content: center;
-	margin: 10px 10px 0;
-	max-height: 750px;
-	max-width: 750px;
-	min-height: 250px;
-	min-width: 250px;
-	width: 65vw;
+	width: 100%;
+}
+
+#etch-container {
+	align-items: center;
+	background: silver;
+	border: solid firebrick;
+	border-radius: 25px;
+	border-width: min(10vw, 50px);
+	box-shadow: 3px 9px 5px #555;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 15px;
+	max-width: 650px;
+	width: 90vw;
 }
 
 #input-slider {
@@ -121,11 +121,12 @@ label {
 
 #options {
 	align-items: center;
+	box-sizing: border-box;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
-	max-width: 750px;
-	width: 65vw;
+	max-width: 650px;
+	width: 90vw;
 }
 
 #title-a {
