@@ -9,7 +9,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	font-family: Arial, Helvetica, sans-serif;
-	justify-content: center;
+	height: 100vh;
+	justify-content: space-between;
 	max-width: 100%;
 	touch-action: manipulation;
 	width: 100vw;
@@ -25,7 +26,7 @@ button {
 	font-size: 16px;
 	font-weight: 700;
 	height: min(10vw, 50px);
-	margin: 15px;
+	margin: 10px;
 	transition-duration: 0.15s;
 	width: min(20vw, 100px);
 }
@@ -41,10 +42,22 @@ button:hover {
 	cursor: pointer;
 }
 
+footer {
+	height: min(10vw, 50px);
+}
+
 h1 {
 	color: firebrick;
-	font-size: min(7.5vw, 7.5vh, 64px);
+	font-size: min(13vw, 95px);
 	text-shadow: -1px -1px seashell, 1px 1px silver, 1px 1px 3px #555;
+}
+
+header {
+	box-sizing: border-box;
+	margin: 25px 0 15px;
+	max-width: 650px;
+	text-align: center;
+	width: 90vw;
 }
 
 label {
@@ -52,6 +65,12 @@ label {
 	font-size: 16px;
 	font-weight: 900;
 	text-shadow: -1px -1px seashell, 1px 1px silver, 1px 1px 3px #555;
+}
+
+main {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 }
 
 .knob {
@@ -67,17 +86,9 @@ label {
 .slider-container {
 	display: flex;
 	flex-direction: column;
-	margin: 15px;
+	margin: 10px;
 	text-align: center;
 	width: min(25vw, 150px);
-}
-
-#banner {
-	box-sizing: border-box;
-	margin: 25px 0;
-	max-width: 650px;
-	text-align: center;
-	width: 90vw;
 }
 
 #base {
