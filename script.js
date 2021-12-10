@@ -9,7 +9,7 @@ let currentSize = 16;
 
 // Function for listeners to update cell color
 function draw(e) {
-	// Hopefully prevent unwanted default behaviors on mobile
+	//Hopefully prevent unwanted default actions on mobile
 	e.preventDefault();
 
 	// Update color of THIS
@@ -23,6 +23,32 @@ function draw(e) {
 	let index = siblings.indexOf(this);
 	if (siblings[index - currentSize]) {
 		siblings[index - currentSize].style.background = "#999";
+	}
+}
+
+// Function for listeners to update cell color by touch
+// This essentially mimics `mouseover` for touch control
+function drawTouch(e) {
+	// Hopefully prevent unwanted actions on mobile
+	e.preventDefault();
+
+	// Use `touches` data on `canvas` to determine 'touchmove' path
+	let touch = e.touches[0];
+	let cell = document.elementFromPoint(touch.clientX, touch.clientY);
+
+	// Then do draw() but modified to be originate from canvas
+	if (cell && cell.classList.contains("cell")) {
+		cell.style.background = "#555";
+
+		// Create array that contains all canvas cells
+		let siblings = Array.from(cell.parentNode.children);
+
+		// Find index of cell within array of its siblings
+		// Then update color of cell one row above
+		let index = siblings.indexOf(cell);
+		if (siblings[index - currentSize]) {
+			siblings[index - currentSize].style.background = "#999";
+		}
 	}
 }
 
@@ -59,9 +85,6 @@ function createCanvas(size = currentSize) {
 
 		// Add listeners
 		div.addEventListener("mouseover", draw);
-		div.addEventListener("touchstart", draw);
-		div.addEventListener("touchmove", draw);
-		div.addEventListener("touchend", draw);
 
 		canvas.appendChild(div);
 	}
@@ -82,6 +105,9 @@ slider.oninput = function () {
 reset.onclick = function () {
 	createCanvas(currentSize);
 };
+
+// Listen for touch interaction with canvas
+canvas.addEventListener("touchmove", drawTouch);
 
 // Listen for orientation changes and update vh/wh
 window.addEventListener("resize", checkRotation);
