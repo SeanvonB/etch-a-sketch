@@ -12,6 +12,7 @@ body {
 	height: 100vh;
 	justify-content: center;
 	overflow: hidden;
+	touch-action: manipulation;
 	width: 100vw;
 }
 

@@ -8,7 +8,10 @@ const label = document.querySelector("#slider-label");
 let currentSize = 16;
 
 // Function for listeners to update cell color
-function draw() {
+function draw(e) {
+	// Hopefully prevent unwanted default behaviors on mobile
+	e.preventDefault();
+
 	// Update color of THIS
 	this.style.background = "#555";
 
@@ -54,8 +57,11 @@ function createCanvas(size = currentSize) {
 		div.style.width = `${100 / size}%`;
 		div.style.height = `${100 / size}%`;
 
-		// Add listener
+		// Add listeners
 		div.addEventListener("mouseover", draw);
+		div.addEventListener("touchstart", draw);
+		div.addEventListener("touchmove", draw);
+		div.addEventListener("touchend", draw);
 
 		canvas.appendChild(div);
 	}
