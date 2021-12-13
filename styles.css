@@ -16,6 +16,15 @@ body {
 	width: 100vw;
 }
 
+a {
+	color: firebrick;
+}
+
+a:hover,
+a:active {
+	color: #0060df;
+}
+
 button {
 	background: firebrick;
 	border: 5px outset seashell;
@@ -43,7 +52,11 @@ button:hover {
 }
 
 footer {
+	color: firebrick;
+	font-size: 16px;
+	font-weight: 700;
 	height: min(10vw, 50px);
+	line-height: min(10vw, 50px);
 }
 
 h1 {
