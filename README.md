@@ -17,3 +17,8 @@ This web recreation of the classic [Etch-A-Sketch](https://en.wikipedia.org/wiki
 
 -   This project was recommended by [The Odin Project](https://www.theodinproject.com/).
 -   "Etch-A-Sketch" is owned by Spin Master of Ontario, Canada.
+
+## License
+
+Copyright © 2021 Sean von Bayern  
+[MIT License](LICENSE.md) – "My code? **Our** code!"
