@@ -1,4 +1,4 @@
-// Global variables
+// Globals
 const canvas = document.querySelector("#canvas");
 const banner = document.querySelector("#banner");
 const base = document.querySelector("#base");
@@ -7,9 +7,9 @@ const slider = document.querySelector("#input-slider");
 const label = document.querySelector("#slider-label");
 let currentSize = 16;
 
-// Function for listeners to update cell color
+// Update cell color according to curser input
 function draw(e) {
-	//Hopefully prevent unwanted default actions on mobile
+	//Hopefully prevent unwanted default actions on mobile?
 	e.preventDefault();
 
 	// Update color of cell
@@ -26,37 +26,32 @@ function draw(e) {
 	}
 }
 
-// Function for listeners to update cell color by touch
+// Update cell color according to touch input
 // This essentially mimics `mouseover` for touch control
 function drawTouch(e) {
-	// Hopefully prevent unwanted actions on mobile
+	// Hopefully prevent unwanted actions on mobile?
 	e.preventDefault();
 
 	// Use `touches` data on `canvas` to determine 'touchmove' path
 	let touch = e.touches[0];
 	let cell = document.elementFromPoint(touch.clientX, touch.clientY);
 
-	// Then do draw() but modified to originate from canvas
+	// Then mimic draw() but modified to originate from canvas
 	if (cell && cell.classList.contains("cell")) {
 		cell.style.background = "#555";
 
-		// Create array that contains all canvas cells
 		let siblings = Array.from(cell.parentNode.children);
-
-		// Find index of cell within array of its siblings
-		// Then update color of sibling one row above
 		let index = siblings.indexOf(cell);
+
 		if (siblings[index - currentSize]) {
 			siblings[index - currentSize].style.background = "#999";
 		}
 	}
 }
 
-// Function to populate canvas with cells
+// Populate new canvas of currentSize with blank cells
 function createCanvas(size = currentSize) {
-	// Clear prexisting canvas
 	canvas.textContent = "";
-
 	for (let i = 0; i < size * size; i++) {
 		let div = document.createElement("div");
 		div.classList.add("cell");
@@ -66,31 +61,23 @@ function createCanvas(size = currentSize) {
 		div.style.width = `${100 / size}%`;
 		div.style.paddingTop = `${100 / size}%`;
 
-		// Add listeners
 		div.addEventListener("mouseover", draw);
-
 		canvas.appendChild(div);
 	}
 }
 
-// Reset slider on refresh
-slider.value = "16";
-
-// Connect label, size slider, and canvas
-label.textContent = `${slider.value}x${slider.value}`;
+// AddEventListeners
+canvas.addEventListener("touchmove", drawTouch);
+reset.onclick = function () {
+	createCanvas(currentSize);
+};
 slider.oninput = function () {
 	label.textContent = `${this.value}x${this.value}`;
 	currentSize = this.value;
 	createCanvas(currentSize);
 };
 
-// Connect reset button and canvas
-reset.onclick = function () {
-	createCanvas(currentSize);
-};
-
-// Listen for touch interaction with canvas
-canvas.addEventListener("touchmove", drawTouch);
-
-// Create initial canvas
+// Initial state
+slider.value = "16";
+label.textContent = `${slider.value}x${slider.value}`;
 createCanvas();

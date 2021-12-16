@@ -22,7 +22,7 @@ a {
 
 a:hover,
 a:active {
-	color: #0060df;
+	color: blue;
 }
 
 button {
@@ -47,7 +47,7 @@ button:active {
 }
 
 button:hover {
-	background: #0060df;
+	background: blue;
 	cursor: pointer;
 }
 
@@ -154,5 +154,5 @@ main {
 }
 
 #title-a {
-	color: #0060df;
+	color: blue;
 }
