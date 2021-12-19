@@ -1,10 +1,9 @@
 // Globals
-const canvas = document.querySelector("#canvas");
-const banner = document.querySelector("#banner");
-const base = document.querySelector("#base");
-const reset = document.querySelector("#reset");
-const slider = document.querySelector("#input-slider");
-const label = document.querySelector("#slider-label");
+const canvas = document.querySelector(".canvas");
+const banner = document.querySelector(".banner");
+const base = document.querySelector(".base");
+const reset = document.querySelector(".reset");
+const slider = document.querySelector(".slider");
 let currentSize = 16;
 
 // Update cell color according to curser input
@@ -13,7 +12,7 @@ function draw(e) {
 	e.preventDefault();
 
 	// Update color of cell
-	this.style.background = "#555";
+	this.style.background = "var(--secondary)";
 
 	// Create array that contains all canvas cells
 	let siblings = Array.from(this.parentNode.children);
@@ -22,7 +21,7 @@ function draw(e) {
 	// Then update color of sibling one row above
 	let index = siblings.indexOf(this);
 	if (siblings[index - currentSize]) {
-		siblings[index - currentSize].style.background = "#999";
+		siblings[index - currentSize].style.background = "var(--tertiary)";
 	}
 }
 
@@ -38,13 +37,13 @@ function drawTouch(e) {
 
 	// Then mimic draw() but modified to originate from canvas
 	if (cell && cell.classList.contains("cell")) {
-		cell.style.background = "#555";
+		cell.style.background = "var(--secondary)";
 
 		let siblings = Array.from(cell.parentNode.children);
 		let index = siblings.indexOf(cell);
 
 		if (siblings[index - currentSize]) {
-			siblings[index - currentSize].style.background = "#999";
+			siblings[index - currentSize].style.background = "var(--tertiary)";
 		}
 	}
 }
@@ -72,12 +71,10 @@ reset.onclick = function () {
 	createCanvas(currentSize);
 };
 slider.oninput = function () {
-	label.textContent = `${this.value}x${this.value}`;
 	currentSize = this.value;
 	createCanvas(currentSize);
 };
 
 // Initial state
 slider.value = "16";
-label.textContent = `${slider.value}x${slider.value}`;
 createCanvas();

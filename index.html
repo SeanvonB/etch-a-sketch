@@ -10,36 +10,34 @@
 		<script src="script.js" defer></script>
 	</head>
 	<body>
-		<header>
-			<h1>Etch-<span id="title-a">A</span>-Sketch</h1>
-		</header>
-		<main>
-			<div id="options">
-				<button id="reset" class="option">Reset</button>
+		<main class="etch-a-sketch">
+			<div class="options">
 				<div class="slider-container">
-					<label for="slider" id="slider-label">16x16</label>
 					<input
 						type="range"
 						min="16"
 						max="64"
 						step="8"
 						value="16"
-						id="input-slider"
-						class="option"
+						class="slider"
 					/>
 				</div>
+				<button class="reset">
+					<span class="label">RESET</span>
+				</button>
 			</div>
-			<div id="etch-container">
-				<div id="canvas"></div>
-				<div id="base">
-					<div class="knob"></div>
-					<div class="knob"></div>
-				</div>
+			<div class="canvas"></div>
+			<div class="base">
+				<div class="knob"></div>
+				<footer>
+					Made by<br />
+					<a href="https://github.com/SeanvonB">SeanvonB</a> |
+					<a href="https://github.com/SeanvonB/etch-a-sketch">
+						Source
+					</a>
+				</footer>
+				<div class="knob"></div>
 			</div>
 		</main>
-		<footer>
-			Made by <a href="https://github.com/SeanvonB">SeanvonB</a> |
-			<a href="https://github.com/SeanvonB/etch-a-sketch">Source</a>
-		</footer>
 	</body>
 </html>
