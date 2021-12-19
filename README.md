@@ -8,10 +8,13 @@ This web recreation of the classic [Etch-A-Sketch](https://en.wikipedia.org/wiki
 
 ## Features
 
--   You can draw by moving your cursor or finger across the canvas.
--   You can clear the canvas with the reset button.
--   You can adjust the canvas density with the size slider.
--   Touch events don't have an equivalent to `mouseover` or `hover` cursor events, so `touchDraw()` uses coords from `Event.touches` to locate elements and allow continuous drawing on mobile.
+-   Draw by moving your cursor or finger across the canvas
+-   Adjust canvas pixel density with the size slider
+-   Clear the canvas with the reset button
+
+## Notes
+
+Touch events don't have an equivalent to cursor events, like `mouseover` or `hover`, that continues to trigger on subsequent elements, so `touchDraw()` uses coordinates stored in `Event.touches` to locate elements beyond the initial touch target. This technique might be useful again someday.
 
 ## Credits
 
@@ -21,4 +24,4 @@ This web recreation of the classic [Etch-A-Sketch](https://en.wikipedia.org/wiki
 ## License
 
 Copyright © 2021 Sean von Bayern  
-[MIT License](LICENSE.md) – "My code? **Our** code!"
+Licensed under the [MIT License](LICENSE.md)
